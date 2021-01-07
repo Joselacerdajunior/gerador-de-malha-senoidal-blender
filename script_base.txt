@@ -1,0 +1,17 @@
+import bpy 
+
+#Define vertices, faces, edges
+verts = []
+faces = [] 
+
+#Define mesh and object
+mesh = bpy.data.meshes.new("Cube")
+object = bpy.data.objects.new("Cube", mesh) 
+
+#Set location and scene of object
+object.location = bpy.context.scene.cursor.location
+bpy.context.collection.objects.link(object) 
+
+#Create mesh
+mesh.from_pydata(verts,[],faces)
+mesh.update(calc_edges=True)
